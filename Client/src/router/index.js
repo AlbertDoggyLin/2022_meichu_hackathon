@@ -53,7 +53,7 @@ const router = createRouter({
       component: uorder
     },
     {
-      path: '/user/shooping',
+      path: '/user/shopping',
       component: ushopping
     },
     {
