@@ -2,7 +2,7 @@
 import { RouterView } from 'vue-router'
 import navbar from './components/asset/navbar.vue'
 import {provide, ref} from 'vue'
-const isLogin = ref(true);
+const isLogin = ref(false);
 const userId = ref('');
 const type = ref('');
 const place = ref('');
