@@ -66,7 +66,7 @@ app.get("/api/product", (req,res,next)=>{
 app.post("/api/buyer/submitOrder",(req,res,next)=>{
   let user_id=req.headers.authorization;
   for(let i=0;i<req.body.length;i++){
-    DB.query("INSERT into `order` (item_id,user_id,count) VALUES ("+req.body[i].id+","+user_id+","+req.body[i].number+")", (err, result, fields)=>{
+    DB.query("INSERT into `order` (item_id,user_id,count,place_id,status) VALUES ("+req.body[i].item_id+","+user_id+","+req.body[i].number+","+req.body[i].place_id+",'ordered')", (err, result, fields)=>{
         if(err) throw err;
     });
   }
@@ -90,6 +90,17 @@ app.get("/api/buyer/orders",(req,res,next)=>{
 })
 
 app.get("/api/buyer/orders/:id",(req,res,next)=>{
+  DB.query("SELECT * FROM `order` WHERE id = "+req.params.id, (err, result, fields)=>{
+    if(err) throw err;
+    if(result.length == 0){
+      res.json({"status": "no value"})
+    }else{
+      res.json(result[0])
+    }
+  });
+})
+
+app.get("/api/seller/orders/:id",(req,res,next)=>{
   DB.query("SELECT * FROM `order` WHERE id = "+req.params.id, (err, result, fields)=>{
     if(err) throw err;
     if(result.length == 0){
