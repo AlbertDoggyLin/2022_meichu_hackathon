@@ -47,17 +47,13 @@ const onclick = async () => {
                placeholder="使用者帳號">
         <input v-model="password" class="text-field" :style="'font-size:'+textSize" type="password" placeholder="使用者密碼">
         <div id="btng">
-            <button @click="$router.push('/')" ref="btn" :style="'font-size:'+btnSize" id="sign-up-btn" class="btn"><i class="fa-solid fa-user-plus"></i>註冊
+            <button @click="$router.push('/')" ref="btn" :style="'font-size:'+btnSize" id="sign-up-btn" class="btn"><i class="fa-solid fa-user-plus"></i>&nbsp;註冊
             </button>
-            <button @click="onclick" :style="'font-size:'+btnSize" id="sign-in-btn" class="btn"><i class="fa-solid fa-right-from-bracket"></i>送出</button>
+            <button @click="onclick" :style="'font-size:'+btnSize" id="sign-in-btn" class="btn"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;送出</button>
         </div>
     </div>
 </template>
 <style scoped>
-i {
-    margin-right: 8%;
-}
-
 #logw {
     display: flex;
     height: 60%;
@@ -96,6 +92,7 @@ i {
     padding: 5%;
     width: 40%;
     gap: 10px;
+    border: none;
     border-radius: 20px;
     color: white;
     font-weight: bold;
@@ -108,8 +105,8 @@ i {
     align-items: flex-start;
     padding: 1% 5%;
     gap: 10px;
-    width: 700px;
-    height: 68px;
+    width: 60%;
+    height: 20%;
     background: #FFFFFF;
     border: 1px solid #546A7B;
     border-radius: 20px;
