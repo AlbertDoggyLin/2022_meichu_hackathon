@@ -1,5 +1,5 @@
 <template>
-  
+  edy
 </template>
 
 <script setup lang="ts">

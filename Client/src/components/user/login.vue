@@ -8,8 +8,8 @@
 </div>
 </template>
 
-<script setup lang="ts">
-import {ref, inject, Ref} from 'vue'
+<script setup>
+import {ref, inject} from 'vue'
 const username=ref('')
 const password=ref('')
 const onclick=async()=>{
@@ -28,11 +28,11 @@ const onclick=async()=>{
         referrer: "no-referrer", // *client, no-referrer
     });
     if(res.status){
-        const isLogin=inject<Ref<Boolean>>('isLogin');
-        const userId=inject<Ref<String>>('userId');
-        const type=inject<Ref<String>>('type');
+        const isLogin=inject('isLogin');
+        const userId=inject('userId');
+        const type=inject('type');
         if(isLogin)isLogin.value=true;
-        if(userId && res.userId:)userId.value=res.userId;
+        userId.value=res.userId;
 
     }
 }
