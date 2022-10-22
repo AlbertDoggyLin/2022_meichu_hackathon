@@ -6,7 +6,7 @@ const password=ref('')
 const onclick=async()=>{
     const un=username.value
     const pw = password.value
-    const res = await fetch('https://api.le37.tw/api/login/seller', {
+    const res = await fetch('https://demo.le37.tw/api/login/seller', {
         body: JSON.stringify({username:un, password:pw}),
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
         credentials: "include", // include, same-origin, *omit
