@@ -11,12 +11,19 @@ provide('type',  type);
 </script>
 
 <template>
-  <div>
+<div id="appW">
   <navbar />
   <RouterView />
-
-  </div>
+</div>
 </template>
 
 <style scoped>
+#appW{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
 </style>
