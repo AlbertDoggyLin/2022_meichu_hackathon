@@ -38,7 +38,7 @@ const sum=ref(s)
 const submit=async ()=>{
   for(let idx in carts.value){
    await (await fetch('https://demo.le37.tw/api/buyer/submitOrder', {
-      body: JSON.stringify({item_id: idx/*Math.floor(Math.random*3)+1*/, number: carts.value[idx].item.number}),
+      body: JSON.stringify({item_id: idx/*Math.floor(Math.random*3)+1*/, number: carts.value[idx].number}),
       method: "POST", 
       headers:{
         'Accept': 'application/json',
