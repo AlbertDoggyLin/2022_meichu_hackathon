@@ -111,4 +111,16 @@ app.get("/api/seller/orders/:id",(req,res,next)=>{
   });
 })
 
+app.get("/api/seller/orders",(req,res,next)=>{
+  let seller_id=req.headers.authorization;
+  DB.query("SELECT `order`.* FROM `item` JOIN `order` ON `order`.`item_id`=item.id WHERE company_id = "+seller_id, (err, result, fields)=>{
+    if(err) throw err;
+    if(result.length == 0){
+      res.json({"status": "no value"})
+    }else{
+      res.json(result[0])
+    }
+  });
+})
+
 app.listen(3000);
