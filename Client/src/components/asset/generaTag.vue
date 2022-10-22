@@ -1,16 +1,17 @@
 <template>
-  <div :style="'color:'+category_id">{{category_id}}</div>
+    <div :style="'color:'+chart[category_id]['color']">{{ chart[category_id]['name'] }}</div>
 </template>
 
 <script setup>
+import {ref, defineProps} from 'vue'
+
 const props = defineProps(['category_id'])
-const chart=[
-{"id":"1","name":"蔬菜","color":"#A4C3B2"},
-{"id":"2","name":"水果","color":"#617BBE"},
-{"id":"3","name":"肉類","color":"#FF7272"},
-{"id":"4","name":"熟食","color":"#FFC794"}
-]
-console.log(props.category_id)
+const chart = ref([
+    {"id": "1", "name": "蔬菜", "color": "#A4C3B2"},
+    {"id": "2", "name": "水果", "color": "#617BBE"},
+    {"id": "3", "name": "肉類", "color": "#FF7272"},
+    {"id": "4", "name": "熟食", "color": "#FFC794"}
+])
 </script>
 
 <style scoped>
