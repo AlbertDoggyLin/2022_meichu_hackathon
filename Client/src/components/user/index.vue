@@ -12,10 +12,10 @@ import { onMounted, ref, inject } from "vue"
 const items=ref([])
 onMounted(async ()=>{
   items.value = fetch('https://demo.le37.tw/api/buyer/products', {
-    header:{
+    headers:{
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': 'barear '+inject('userId').value,
+        'Authorization': inject('userId').value,
     }
   })
 })
