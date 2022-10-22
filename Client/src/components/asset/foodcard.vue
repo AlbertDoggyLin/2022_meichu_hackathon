@@ -1,10 +1,6 @@
 <script setup>
 import {defineProps} from 'vue'
-<<<<<<< HEAD
 import generatag from './generaTag.vue'
-=======
-
->>>>>>> f7918e63f64fca0922c0c7ecfb9aa5ae4c8e2170
 defineProps(['title', 'category_id', 'image', 'end_time', 'arrive_time', 'sold', 'total'])
 </script>
 
