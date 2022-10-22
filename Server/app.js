@@ -56,7 +56,7 @@ app.get("/api/product/:id", (req,res,next)=>{
   });
 });
 
-app.get("/api/product", (req,res,next)=>{
+app.get("/api/products", (req,res,next)=>{
     DB.query("SELECT * FROM item", (err, result, fields)=>{
         if(err) throw err;
         res.json(result)
