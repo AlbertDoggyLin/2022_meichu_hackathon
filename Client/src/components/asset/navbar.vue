@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">
-    <div><icon src="logo.svg"/></div>
+    <div style="height:300px; width:300px;"><icon src="logo.svg"/></div>
     <loginbut v-if="!isLogin" />
     <functionbar v-else />
   </div>
