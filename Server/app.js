@@ -24,9 +24,10 @@ app.post("/api/login/buyer", (req,res,next)=>{
       if(err) throw err;
       if(result.length == 0){
         res.json({"status": "login fail"})
+      }else{
+        result[0].type="buyer"
+        res.json(result[0])
       }
-      result[0].type="buyer"
-      res.json(result[0])
   });
 });
 
@@ -35,9 +36,10 @@ app.post("/api/login/seller", (req,res,next)=>{
       if(err) throw err;
       if(result.length == 0){
         res.json({"status": "login fail"})
+      }else{
+        result[0].type="seller"
+        res.json(result[0])
       }
-      result[0].type="seller"
-      res.json(result[0])
   });
 });
 
