@@ -27,16 +27,31 @@
 
 <script setup>
 import { inject, ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const carts=inject('car')
 const username=inject('username')
 let s=0
-for(key in carts.value){
-  s+=carts.value[key].price*carts.value[key].item.number
+for(let idx in carts.value){
+  s+=carts.value[idx].price*carts.value[idx].number
 }
 const sum=ref(s)
-const submit=()=>{
-  
+const userId=inject('userId')
+const router=useRouter();
+const submit=async ()=>{
+  for(let idx in carts.value){
+   await (await fetch('https://demo.le37.tw/api/buyer/submitOrder', {
+      body: JSON.stringify({item_id: idx/*Math.floor(Math.random*3)+1*/, number: carts.value[idx].number}),
+      method: "POST", 
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': userId.value,
+      }
+    })).json();
+  }
+  router.push('/user/order')
+
 }
 </script>
 

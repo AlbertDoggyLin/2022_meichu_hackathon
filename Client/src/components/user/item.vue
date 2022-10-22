@@ -36,8 +36,9 @@ fetch('https://demo.le37.tw/api/product/'+route.params.id, {
 const browse=ref(true)
 const number=ref(0)
 let choice=''
+const car=inject('car')
+const router=useRouter()
 const send=()=>{
-    const car=inject('car')
     if(id.value in car.value)car.value[id.value].number+=number.value
     else {
         car.value[id.value]={
@@ -46,7 +47,7 @@ const send=()=>{
             title:title.value
         }
     }
-    if(choice!='cart')useRouter().push('/user/shopping')
+    if(choice!='cart')router.push('/user/shopping')
 }
 const jmp=(btn)=>{
     browse.value=false
