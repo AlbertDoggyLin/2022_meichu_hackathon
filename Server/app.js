@@ -123,4 +123,33 @@ app.get("/api/seller/orders",(req,res,next)=>{
   });
 })
 
+app.get("/api/seller/products",(req,res,next)=>{
+  for(let i=0;i<req.body.length;i++){
+    DB.query("SELECT * FROM item WHERE company_id = "+req.body[i].company_id+" AND name = "+req.body[i].name, (err, result, fields)=>{
+      if(err) throw err;
+      if(result.length == 0){
+        let key_str = "";
+        let value_str = "";
+        for(let key in req.body[i]){
+          key_str += key+",";
+          value_str += "'"+req.body[i][key]+"',";
+        }
+        key_str = key_str.substring(0,key_str.length-1);
+        value_str = value_str.substring(0,value_str.length-1);
+        DB.query("INSERT into item ("+key_str+") VALUES ("+value_str+")", ()=>{});
+      }else{
+        let upd_str = "";
+        for(let key in req.body[i]){
+          if(key != "id" && key != "company_id" && key != "name"){
+            upd_str += key+"="+req.body[i][key]+",";
+          }
+        }
+        upd_str = upd_str.slice(0,upd_str.length-1);
+        DB.query("UPDATE item SET "+upd_str+" WHERE company_id = "+req.body[i].company_id+" AND name = "+req.body[i].name, ()=>{});
+      }
+    });
+  }
+})
+
+
 app.listen(3000);
