@@ -11,8 +11,11 @@ provide('type',  type);
 </script>
 
 <template>
+  <div>
   <navbar />
   <RouterView />
+
+  </div>
 </template>
 
 <style scoped>

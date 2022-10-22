@@ -15,15 +15,15 @@ const password=ref('')
 const onclick=async()=>{
     const un=username.value
     const pw = password.value
-    const res = await fetch('https://api.le37.tw/', {
-        body: JSON.stringify({un, pw}),
+    const res = await fetch('https://api.le37.tw/api/login/seller', {
+        body: JSON.stringify({username:un, password:pw}),
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: "same-origin", // include, same-origin, *omit
+        credentials: "include", // include, same-origin, *omit
         headers: {
             "Content-type": "application/json; charset=UTF-8",
         },
         method: "POST", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, cors, *same-origin
+        mode: "no-cors", // no-cors, cors, *same-origin
         redirect: "follow", // manual, *follow, error
         referrer: "no-referrer", // *client, no-referrer
     });
