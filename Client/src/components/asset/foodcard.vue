@@ -37,7 +37,6 @@ defineProps(['title', 'category_id', 'image', 'end_time', 'arrive_time', 'sold',
             <div id="progress">{{ sold * 100 / total }}%</div>
         </div>
     </div>
-<<<<<<< HEAD
 </div>
 </div>
 </template>
@@ -48,15 +47,6 @@ defineProps(['title', 'category_id', 'image', 'end_time', 'arrive_time', 'sold',
     height: 265px;
     padding:30px;
     flex:row;
-=======
-</template>
-
-<style scoped>
-#fcw {
-    width: 391px;
-    height: 235px;
-    flex: row;
->>>>>>> f7918e63f64fca0922c0c7ecfb9aa5ae4c8e2170
     justify-content: space-between;
     align-items: center;
 }
