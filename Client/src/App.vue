@@ -3,7 +3,7 @@ import { RouterView } from 'vue-router'
 import navbar from './components/asset/navbar.vue'
 import {provide, ref} from 'vue'
 const isLogin = ref(false);
-const userId = ref('');
+const userId = ref('2');
 const type = ref('');
 const place = ref('');
 const car = ref({});
