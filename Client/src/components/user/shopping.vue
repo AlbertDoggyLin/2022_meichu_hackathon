@@ -30,14 +30,13 @@ import { inject, ref } from 'vue';
 
 const carts=inject('car')
 const username=inject('username')
-
 let s=0
 for(key in carts.value){
   s+=carts.value[key].price*carts.value[key].item.number
 }
 const sum=ref(s)
 const submit=()=>{
-
+  
 }
 </script>
 

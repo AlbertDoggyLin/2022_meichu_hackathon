@@ -29,7 +29,7 @@ fetch('https://demo.le37.tw/api/product/'+route.params.id, {
   end_time.value=item.end_time;
   send_time.value=item.send_time;
   total.value=item.total;
-  total.price=item.price;
+  price.value=item.price;
   description.value=item.description;
   sold.value=item.sold;
 })
@@ -38,7 +38,7 @@ const number=ref(0)
 let choice=''
 const send=()=>{
     const car=inject('car')
-    if(id.value in car.value)car.value[id.value].nember+=number.value
+    if(id.value in car.value)car.value[id.value].number+=number.value
     else {
         car.value[id.value]={
             number:number.value,
