@@ -83,7 +83,7 @@ app.get("/api/buyer/products",(req,res,next)=>{
 
 app.get("/api/buyer/orders",(req,res,next)=>{
   let user_id=req.headers.authorization;
-  DB.query("SELECT * FROM `order` WHERE user_id = "+user_id, (err, result, fields)=>{
+  DB.query("SELECT `order`.*,item.name FROM `order` JOIN item ON item.id=`order`.item_id WHERE user_id = "+user_id, (err, result, fields)=>{
     if(err) throw err;
     res.json(result)
   });
