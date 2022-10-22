@@ -31,6 +31,5 @@ provide('car',  car);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
 }
 </style>

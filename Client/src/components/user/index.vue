@@ -19,21 +19,25 @@ onMounted(async ()=>{
 </script>
 
 <template>
-  <div id="indw">
-    <div v-for="(item, index) in items" :key="items.name">
-        <foodCard v-bind="item" :title="item.name"/>
+    <div id="outdw">
+      <div id="indw">
+        <div v-for="(item, index) in items" :key="items.name">
+            <foodCard v-bind="item" :title="item.name"/>
+        </div>
+      </div>
     </div>
-  </div>
 </template>
 
 <style scoped>
+#outdw {
+    display: flex;
+    justify-content: center;
+}
+
 #indw{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  justify-items: center;
-  align-items: flex-start;
-  align-content: center;
-  flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 </style>

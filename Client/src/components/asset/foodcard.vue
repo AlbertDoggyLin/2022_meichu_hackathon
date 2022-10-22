@@ -1,49 +1,72 @@
 <script setup>
-import {defineProps} from 'vue'
 import generatag from './generaTag.vue'
-defineProps(['title', 'category_id', 'image', 'end_time', 'arrive_time', 'sold', 'total'])
+
+defineProps(['title', 'category_id', 'image', 'end_time', 'arrive_time', 'sold', 'total', 'id'])
+const dealDate = (date) => {
+    date = new Date(date);
+    return `${(date.getMonth()+1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+}
 </script>
 
 <template>
-<div>
-<div id="fcw">
-    <div id="picw">
-        <img :src="image" :alt="title">
+    <div>
+        <button @click="$router.push('/user/item/'+id)" id="fcw">
+            <div id="picw">
+                <img style="height: 150px; border-radius: 100%" :src="image" :alt="title">
+            </div>
+
+            <div>
+                <div id="name">{{ title }}</div>
+                <div id="tag">
+                    <generatag :category_id="category_id"/>
+                </div>
+                <div id="infoArea">
+                    <div id="end">
+                        <div class="info"><i class="fa-solid fa-stopwatch icon"></i>&nbsp;&nbsp;{{ dealDate(end_time) }}</div>
+                    </div>
+                    <div id="arrive">
+                        <div class="info"><i class="fa-solid fa-truck icon"></i>&nbsp;{{ dealDate(arrive_time) }}</div>
+                    </div>
+                    <div class="info"><i class="fa-solid fa-box icon"></i>&nbsp;&nbsp;&nbsp;{{ total - sold }}</div>
+                </div>
+            </div>
+        </button>
     </div>
-    <div id="infoArea">
-        <div id="name">{{title}}</div>
-        <div id="tag"><generatag :category_id="category_id" /></div>
-        <div id="end">
-            <div id="clock">clock icon</div>
-            <div id="endtime">{{end_time}}</div>
-        </div>
-        <div id="infoArea">
-            <div id="name">{{ title }}</div>
-            <div id="tag">
-                <generatag :category="category_id"/>
-            </div>
-            <div id="end">
-                <div id="clock">clock icon</div>
-                <div id="endtime">{{ end_time }}</div>
-            </div>
-            <div id="arrive">
-                <div id="truck">truck icon</div>
-                <div id="arrivetime">{{ arrive_time }}</div>
-            </div>
-            <div id="progress">{{ sold * 100 / total }}%</div>
-        </div>
-    </div>
-</div>
-</div>
 </template>
 
 <style scoped>
-#fcw{
-    width: 420px;
-    height: 265px;
-    padding:30px;
-    flex:row;
-    justify-content: space-between;
+#fcw {
+    width: 350px;
+    height: 260px;
+    padding: 10px;
+    margin: 30px;
+    background-color: white;
+    border-radius: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
     align-items: center;
+    border: none;
+    box-shadow: 0 0 10px red;
+}
+
+#name {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+#infoArea {
+    text-align: left;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.info {
+    margin: 5% 0;
+}
+
+.icon {
+    color: #446882;
 }
 </style>
