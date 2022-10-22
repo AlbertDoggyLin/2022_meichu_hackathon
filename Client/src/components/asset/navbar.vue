@@ -1,9 +1,11 @@
 <template>
-  <div id="wrapper">
-    <div style="height:300px; width:300px;"><icon src="logo.svg"/></div>
-    <loginbut v-if="!isLogin" />
-    <functionbar v-else />
-  </div>
+    <div id="wrapper">
+        <div style="height:300px; width:300px;">
+            <icon src="logo.svg"/>
+        </div>
+        <loginbut v-if="!isLogin"/>
+        <functionbar v-else/>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -11,11 +13,12 @@ import {inject} from 'vue'
 import icon from './icon.vue'
 import loginbut from './loginbut.vue'
 import functionbar from './functionbar.vue'
+
 const isLogin = inject('isLogin')
 </script>
 
 <style scoped>
-#wrapper{
+#wrapper {
     width: 100%;
     height: 10%;
     display: flex;
