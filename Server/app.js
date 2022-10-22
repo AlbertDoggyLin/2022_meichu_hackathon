@@ -20,11 +20,12 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.get('/',(req,res,next)=>{res.json({message:'hello world'})})
 
 app.post("/api/login/buyer", (req,res,next)=>{
-  DB.query("SELECT id FROM user WHERE account='"+req.body["username"]+"' AND password='"+req.body["password"]+"'", (err, result, fields)=>{
+  DB.query("SELECT * FROM `user` JOIN place ON user.place_id=place.id WHERE user.account='"+req.body["username"]+"' AND user.password='"+req.body["password"]+"'", (err, result, fields)=>{
       if(err) throw err;
       if(result.length == 0){
         res.json({"status": "login fail"})
       }else{
+        delete result[0].password
         result[0].type="buyer"
         res.json(result[0])
       }
@@ -32,11 +33,12 @@ app.post("/api/login/buyer", (req,res,next)=>{
 });
 
 app.post("/api/login/seller", (req,res,next)=>{
-  DB.query("SELECT id FROM company WHERE account='"+req.body["username"]+"' AND password='"+req.body["password"]+"'", (err, result, fields)=>{
+  DB.query("SELECT * FROM company WHERE account='"+req.body["username"]+"' AND password='"+req.body["password"]+"'", (err, result, fields)=>{
       if(err) throw err;
       if(result.length == 0){
         res.json({"status": "login fail"})
       }else{
+        delete result[0].password
         result[0].type="seller"
         res.json(result[0])
       }
