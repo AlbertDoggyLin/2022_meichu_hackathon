@@ -27,6 +27,7 @@
 
 <script setup>
 import { inject, ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const carts=inject('car')
 const username=inject('username')
@@ -35,6 +36,8 @@ for(let idx in carts.value){
   s+=carts.value[idx].price*carts.value[idx].number
 }
 const sum=ref(s)
+const userId=inject('userId')
+const router=useRouter();
 const submit=async ()=>{
   for(let idx in carts.value){
    await (await fetch('https://demo.le37.tw/api/buyer/submitOrder', {
@@ -43,10 +46,12 @@ const submit=async ()=>{
       headers:{
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': inject('userId').value,
+        'Authorization': userId.value,
       }
     })).json();
   }
+  router.push('/user/order')
+
 }
 </script>
 
