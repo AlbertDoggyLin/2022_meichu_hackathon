@@ -34,6 +34,7 @@ fetch('https://demo.le37.tw/api/product/'+route.params.id, {
   sold.value=item.sold;
 })
 const browse=ref(true)
+const number=ref(0)
 let choice=''
 const send=()=>{
     const car=inject('car')
@@ -100,8 +101,8 @@ const jmp=(btn)=>{
                     <div>取消</div>
                 </button>
                 <button id="submit" @click="send()">
-                    <div id="car">caricon</div>
-                    <div>加入購物車</div>
+                    <div id="submiticon">submiticon</div>
+                    <div>送出</div>
                 </button>
             </div>
         </div>

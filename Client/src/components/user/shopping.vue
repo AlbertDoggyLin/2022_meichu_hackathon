@@ -26,13 +26,14 @@
 </template>
 
 <script setup>
-import { inject } from 'vue';
+import { inject, ref } from 'vue';
 
-const carts=inject('carts')
+const carts=inject('car')
 const username=inject('username')
+
 let s=0
-for(item in carts){
-  s+=item.price*item.number
+for(key in carts.value){
+  s+=carts.value[key].price*carts.value[key].item.number
 }
 const sum=ref(s)
 const submit=()=>{
