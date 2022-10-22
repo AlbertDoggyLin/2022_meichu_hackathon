@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.get('/',(req,res,next)=>{res.json({message:'hello world'})})
 
 app.post("/api/login/buyer", (req,res,next)=>{
-  DB.query("SELECT * FROM `user` JOIN place ON user.place_id=place.id WHERE user.account='"+req.body["username"]+"' AND user.password='"+req.body["password"]+"'", (err, result, fields)=>{
+  DB.query("SELECT * FROM `user` JOIN place ON user.place_id=place.id WHERE user.account='"+req.body["username"]+"' AND password='"+req.body["password"]+"'", (err, result, fields)=>{
       if(err) throw err;
       if(result.length == 0){
         res.json({"status": "login fail"})
@@ -71,6 +71,14 @@ app.post("/api/buyer/submitOrder",(req,res,next)=>{
     });
   }
   res.json({"status":"success"})
+})
+
+app.get("/api/buyer/products",(req,res,next)=>{
+  let user_id=req.headers.authorization;
+  DB.query("SELECT item.* FROM `user` JOIN company_to_place ON user.place_id=company_to_place.place_id JOIN item ON company_to_place.company_id=item.company_id WHERE user.id = "+user_id, (err, result, fields)=>{
+    if(err) throw err;
+    res.json(result)
+  });
 })
 
 app.get("/api/buyer/orders",(req,res,next)=>{
