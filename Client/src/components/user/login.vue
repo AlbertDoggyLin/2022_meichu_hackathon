@@ -75,7 +75,7 @@ const onclick = async () => {
     font-size: 64px;
     line-height: 79px;
     text-align: center;
-    color: #000000;
+    color: #41b883;
 }
 
 #btng {
