@@ -3,12 +3,13 @@ import { onMounted, ref, inject } from "vue"
 import foodCard from '../asset/foodcard.vue'
 
 const items=ref([])
+const user_id=inject('userId');
 onMounted(async ()=>{
   items.value = await (await fetch('https://demo.le37.tw/api/buyer/products', {
     headers:{
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': inject('userId').value,
+        'Authorization': user_id.value,
     }
   })).json()
   if(!items.value){

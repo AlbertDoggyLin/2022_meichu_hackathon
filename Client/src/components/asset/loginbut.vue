@@ -1,5 +1,5 @@
 <template>
-<button>Login</button>
+<button @click="$router.push('/user/login')">Login</button>
 </template>
 
 <script setup lang="ts">
