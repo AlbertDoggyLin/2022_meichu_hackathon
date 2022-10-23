@@ -37,7 +37,6 @@ const r7=ref(null)
 onMounted(()=>{
     const h = site.value.clientHeight
     he.value=7*h;
-    console.log(he.value)
     r1.value.style.height = r2.value.style.height = r3.value.style.height
      = r4.value.style.height = r5.value.style.height = r6.value.style.height = r7.value.style.height = `${h}px`;
     site.value.onscroll = null
