@@ -1,7 +1,7 @@
 <template>
-    <div id="p2w" ref="pa">
+    <div id="p2w">
         <div>
-        <img src="/public/fullpage/p2.png" alt="p2" :onload="loaded()" ref="img">
+        <img src="/public/fullpage/p2.png" alt="p2">
         </div>
     </div>
 </template>
