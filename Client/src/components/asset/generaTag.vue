@@ -1,9 +1,9 @@
 <template>
-    <div :style="'color:'+chart[category_id]['color']">{{ chart[category_id]['name'] }}</div>
+    <div :style="'background-color:'+chart[category_id]['color']">{{ chart[category_id]['name'] }}</div>
 </template>
 
 <script setup>
-import {ref, defineProps} from 'vue'
+import {defineProps, ref} from "vue";
 
 const props = defineProps(['category_id'])
 const chart = ref([
@@ -15,5 +15,10 @@ const chart = ref([
 </script>
 
 <style scoped>
-
+div {
+    color: white;
+    border-radius: 25%;
+    width: 60%;
+    margin: auto;
+}
 </style>
