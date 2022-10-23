@@ -1,22 +1,19 @@
 <template>
-  <div style="position:fixed;height:100vh;width:100vw;">
-    <div class="title">
-        我的訂單
+    <div id="shw">
+        <div id="title">我的訂單</div>
+        <table id="main">
+            <tr id="head">
+                <th>商品</th>
+                <th>配送狀態</th>
+                <th></th>
+            </tr>
+            <tr v-for="i in myList" :key="i">
+                <td class="title">{{ i.name }}</td>
+                <td class="price">{{ toChinese(i.status) }}</td>
+                <td class="counter">訂單資訊</td>
+            </tr>
+        </table>
     </div>
-    <div class="tableHeader">
-      <div class="row">
-        <div class="col">商品</div>
-        <div class="col">配送狀態</div>
-        <div class="col"></div>
-      </div>
-      <div v-for="i in myList" :key="i" class="row">
-        <div class="col">{{i.name}}</div>
-        <div class="col">{{i.status}}</div>
-        <div class="col">訂單資訊</div>
-      </div>
-    </div>
-    <div class="footer"></div>
-  </div>
 </template>
 
 <script setup>
@@ -26,90 +23,57 @@ const myList = ref({})
 
 onMounted(async () => {
     const res = await (await fetch('https://demo.le37.tw/api/buyer/orders', {
-      headers:{
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': inject('userId').value,
-    }
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': inject('userId').value,
+        }
     })).json();
     myList.value = res
 })
 
-
+const toChinese = (status) => {
+    if (status == 'ordered') {
+        return '準備中';
+    } else if (status == 'sending') {
+        return '配送中';
+    } else if (status == 'arrived') {
+        return '已送達';
+    } else if (status == 'received') {
+        return '已接收'
+    } else {
+        return '錯誤';
+    }
+}
 </script>
 
 <style scoped>
-.title{
-  position: absolute;
-  left: 10%;
-  top:  23%;
-  /*font-family: '?????';*/
-  font-style: normal;
-  font-weight: 400;
-  font-size: min(5vh,10vw);
-  line-height: 64px;
-  /* identical to box height */
-
-  text-align: center;
-
-  color: #ffffff;
-
-}
-.tableHeader{
-  box-sizing: border-box;
-
-  position: absolute;
-  padding-top:10px;
-  width:80%;
-  height: 58px;
-  left: 5%;
-  top: 35%;
-
-  border-top: 3px solid #4f4f4f;
+#shw {
+    width: 100%;
+    padding: 0 5%;
 }
 
-.table{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 20px;
-  gap: 10px;
-
-  position: absolute;
-  width: 90%;
-  height: 354px;
-  top: 298px;
+#title {
+    font-weight: 900;
+    font-size: 40px;
+    margin: 3% 0;
 }
 
-.row{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+#main {
+    border-collapse: collapse;
+    width: 100%;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 10%;
 }
 
-.col{
-  width: 33%;
-  height: 100%;
-  font-style: normal;
-  font-weight: 400;
-  font-size: min(3vh,3vw);
-  line-height: 29px;
-  /* identical to box height */
-
-  text-align: center;
-
-  color: #383838ea;
+#head {
+    color: #565656;
 }
-.footer{
-  box-sizing: border-box;
 
-  position: absolute;
-  width:80%;
-  height: 58px;
-  left: 5%;
-  bottom: 5%;
-
-  border-top: 3px solid #4f4f4f;
+th, td {
+    padding: 1%;
 }
 </style>

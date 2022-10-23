@@ -64,7 +64,7 @@ const dealDate = (date) => {
 <template>
     <div id="itw">
         <div id="picw">
-            <img style="height: 380px; border-radius: 5%;" :src="image" :alt="title">
+            <img style="height: 340px; border-radius: 5%;" :src="image" :alt="title">
         </div>
         <div id="right-half">
             <div id="infoArea">
@@ -133,6 +133,9 @@ const dealDate = (date) => {
     background-color: #F9F9F9;
     border-radius: 10%;
     height: max-content;
+    width: 50%;
+    margin-left: 5%;
+    padding: 1%;
 }
 
 #name {

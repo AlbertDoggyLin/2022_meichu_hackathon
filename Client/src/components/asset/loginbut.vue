@@ -19,19 +19,23 @@ button {
     line-height: 1;
     cursor: pointer;
     text-align: center;
+    text-decoration: none;
 }
 
 button:hover,
 button:focus {
     color: #1E4460;
+    text-decoration: none;
 }
 
 button:focus {
     outline: 1px solid #fff;
     outline-offset: -4px;
+    text-decoration: none;
 }
 
 button:active {
     transform: scale(0.99);
+    text-decoration: none;
 }
 </style>

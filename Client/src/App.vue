@@ -5,7 +5,7 @@ import {provide, ref} from 'vue'
 
 const isLogin = ref(false);
 const userId = ref('2');
-const username = ref('quan');
+const username = ref('Quan');
 const type = ref('');
 const place = ref('');
 const car = ref({});
