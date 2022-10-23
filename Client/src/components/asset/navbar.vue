@@ -1,6 +1,6 @@
 <template>
     <div id="wrapper">
-        <div style="width: 100px;">
+        <div style="width: 100px; height: 100px;">
             <icon src="logo.png"/>
         </div>
         <loginbut v-if="!isLogin"/>
