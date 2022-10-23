@@ -12,7 +12,7 @@ button {
     margin: 0;
     text-decoration: none;
     background: transparent;
-    color: #6B9080;
+    color: #446882;
     font-weight: 900;
     font-family: sans-serif;
     font-size: 1.5rem;
@@ -23,7 +23,7 @@ button {
 
 button:hover,
 button:focus {
-    color: #445E53;
+    color: #1E4460;
 }
 
 button:focus {
