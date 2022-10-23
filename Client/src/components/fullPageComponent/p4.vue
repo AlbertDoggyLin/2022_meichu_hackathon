@@ -1,6 +1,8 @@
 <template>
     <div id="p4w" ref="pa">
-        <img src="/public/fullpage/p4.png" alt="p4" ref="img">
+        <div>
+        <img src="/public/fullpage/p4.png" alt="p4" :onload="loaded()" ref="img">
+        </div>
     </div>
 </template>
 
@@ -9,14 +11,36 @@ import { onMounted, ref } from "vue"
 
 const pa=ref(null)
 const img=ref(null)
+const mounted=ref(false)
+const imgloaded=ref(false)
+const loaded=()=>{
+    imgloaded.value=true
+    if(mounted.value&&imgloaded.value){
+        setTimeout(() => {
+            const ratio=img.value.clientHeight/img.value.clientWidth;
+            const w=pa.value.clientWidth;
+            const h=pa.value.clientHeight;
+            let picw=w<h/ratio?w:h/ratio;
+            if(picw==0)picw='50px';
+            console.log(w, h)
+            img.value.style.width=`${picw}px`;
+            img.value.style.height = `${picw*ratio}px`;
+        }, 100);
+    }
+}
 onMounted(()=>{
-    img.onload=()=>{
-        const ratio=img.value.clientHeight/img.value.clientWidth;
-        const w=pa.value.clientWidth;
-        const h=pa.value.clientHeight;
-        const picw=w<h/ratio?w:h/ratio;
-        img.value.style.width=`${picw}px`;
-        img.value.style.height = `${picw*ratio}px`;
+    mounted.value=true
+    if(mounted.value&&imgloaded.value){
+        setTimeout(() => {
+            const ratio=img.value.clientHeight/img.value.clientWidth;
+            const w=pa.value.clientWidth;
+            const h=pa.value.clientHeight;
+            let picw=w<h/ratio?w:h/ratio;
+            if(picw==0)picw='50px';
+            console.log(w, h)
+            img.value.style.width=`${picw}px`;
+            img.value.style.height = `${picw*ratio}px`;
+        }, 100);
     }
 })
 </script>
@@ -25,6 +49,9 @@ onMounted(()=>{
 #p4w{
     height: 100%;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 img{
     width: 100%;
