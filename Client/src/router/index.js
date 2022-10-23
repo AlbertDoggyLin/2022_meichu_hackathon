@@ -74,7 +74,7 @@ const router = createRouter({
       component: uindex
     },
     {
-      path:'/',
+      path:'/:pathMatch(.*)*',
       component:main
     }
   ]

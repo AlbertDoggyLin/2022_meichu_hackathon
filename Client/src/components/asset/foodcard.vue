@@ -8,11 +8,17 @@ const dealDate = (date) => {
     date = new Date(date);
     return `${(date.getMonth()+1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
 }
+const chart = ref([
+    {"id": "1", "name": "水果", "color": "#617BBE"},
+    {"id": "2", "name": "蔬菜", "color": "#A4C3B2"},
+    {"id": "3", "name": "熟食", "color": "#FFC794"},
+    {"id": "4", "name": "肉類", "color": "#FF7272"}
+])
 </script>
 
 <template>
     <div>
-        <button @click="$router.push('/user/item/'+id)" id="fcw" style="box-shadow: 0 0 10px 'cat_color';">
+        <button @click="$router.push('/user/item/'+id)" id="fcw" :style="'box-shadow: 0 0 10px '+chart[category_id]['color']">
             <div id="picw">
                 <img style="height: 150px; border-radius: 100%" :src="image" :alt="title">
             </div>
@@ -48,7 +54,6 @@ const dealDate = (date) => {
     align-content: center;
     align-items: center;
     border: 1px solid lightgray;
-    box-shadow: 0 0 10px red;
 }
 
 #in-btn {

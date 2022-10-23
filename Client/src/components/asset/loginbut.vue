@@ -12,9 +12,10 @@ button {
     margin: 0;
     text-decoration: none;
     background: transparent;
-    color: #ffffff;
+    color: #6B9080;
+    font-weight: 900;
     font-family: sans-serif;
-    font-size: 1rem;
+    font-size: 1.5rem;
     line-height: 1;
     cursor: pointer;
     text-align: center;
@@ -22,7 +23,7 @@ button {
 
 button:hover,
 button:focus {
-    background: #0053ba;
+    color: #445E53;
 }
 
 button:focus {
