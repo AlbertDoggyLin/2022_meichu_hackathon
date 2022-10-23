@@ -1,7 +1,7 @@
 <template>
     <div id="wrapper">
         <div style="width: 100px; height: 100px;">
-            <icon src="/logo.png"/>
+            <img src="/logo.png"/>
         </div>
         <loginbut v-if="!isLogin"/>
         <functionbar v-else/>
