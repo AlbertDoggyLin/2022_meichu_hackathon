@@ -1,6 +1,5 @@
 <template>
     <div>
-        <icon src='logo.png'/>
         <div id="userName">{{ userName }}</div>
         <div id="placeName">{{ placeName }}</div>
         <i class="fa-solid fa-cart-shopping" @click="$router.push('/user/shopping')"></i>
