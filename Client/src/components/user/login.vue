@@ -2,7 +2,6 @@
 import {ref, inject, onMounted} from 'vue'
 import { useRouter } from 'vue-router'
 
-const username = ref('')
 const text = ref()
 const textSize = ref()
 const btn = ref()
@@ -14,6 +13,7 @@ onMounted(() => {
 
 const router=useRouter();
 const isLogin = inject('isLogin');
+const username = inject('username');
 const userId = inject('userId');
 const type = inject('type');
 
