@@ -99,7 +99,7 @@ onMounted(async () => {
 
   text-align: center;
 
-  color: #cfcfcf;
+  color: #383838ea;
 }
 .footer{
   box-sizing: border-box;
