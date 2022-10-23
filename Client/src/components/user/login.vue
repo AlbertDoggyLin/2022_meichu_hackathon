@@ -94,7 +94,8 @@ const onclick = async () => {
 
 .btn {
     padding: 5%;
-    width: 40%;
+    margin: 0 5%;
+    width: 50%;
     gap: 10px;
     border: none;
     border-radius: 20px;

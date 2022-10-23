@@ -1,11 +1,11 @@
 <template>
-    <div id="wrapper">
-        <div style="height:300px; width:300px;">
-            <icon src="logo.svg"/>
-        </div>
-        <loginbut v-if="!isLogin"/>
-        <functionbar v-else/>
-    </div>
+<!--    <div id="wrapper">-->
+<!--        <div style="width: 100px;">-->
+<!--            <icon src="logo.png"/>-->
+<!--        </div>-->
+<!--        <loginbut v-if="!isLogin"/>-->
+<!--        <functionbar v-else/>-->
+<!--    </div>-->
 </template>
 
 <script setup lang="ts">
