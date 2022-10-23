@@ -66,52 +66,53 @@ const dealDate = (date) => {
         <div id="picw">
             <img style="height: 380px; border-radius: 5%;" :src="image" :alt="title">
         </div>
-        <div id="infoArea">
-            <div id="name">{{ title }}</div>
-            <div id="tag">
-                <generatag :category_id="category_id"/>
-            </div>
-            <p id="description">{{ descript }}</p>
-            <div v-if="browse">
-                <table style="width: 60%; margin-left: 20%;">
-                    <tr>
-                        <td>收單時間</td>
-                        <td>{{ dealDate(end_time) }}</td>
-                    </tr>
-                    <tr>
-                        <td>抵達時間</td>
-                        <td>{{ dealDate(arrive_time) }}</td>
-                    </tr>
-                    <tr>
-                        <td>剩餘數目</td>
-                        <td>{{ total - sold }}</td>
-                    </tr>
-                </table>
-                <div id="purchase">
-                    <button id="purchase-btn" class="btn" @click="jmp('purchase')">
-                        <div><i class="fa-solid fa-file-invoice-dollar"></i>&nbsp;直接購買</div>
-                    </button>
-                    <button id="shopping-btn" class="btn" @click="jmp('cart')">
-                        <div><i class="fa-solid fa-cart-shopping"></i>&nbsp;加入購物車</div>
-                    </button>
+        <div id="right-half">
+            <div id="infoArea">
+                <div id="name">{{ title }}</div>
+                <div id="tag">
+                    <generatag :category_id="category_id"/>
                 </div>
-            </div>
-            <div v-else>
-                <div id="number">
-                    <div>購買數量</div>
-                    <button @click="number-=1">-</button>
-                    <div>{{ number }}</div>
-                    <button @click="number+=1">+</button>
+                <p id="description">{{ descript }}</p>
+                <div v-if="browse">
+                    <table style="width: 60%; margin-left: 20%; font-size: 1rem">
+                        <tr>
+                            <td style="color: #546A7B;">收單時間</td>
+                            <td>{{ dealDate(end_time) }}</td>
+                        </tr>
+                        <tr>
+                            <td style="color: #546A7B;">抵達時間</td>
+                            <td>{{ dealDate(arrive_time) }}</td>
+                        </tr>
+                        <tr>
+                            <td style="color: #546A7B;">剩餘數目</td>
+                            <td>{{ total - sold }}</td>
+                        </tr>
+                    </table>
+                    <div class="btn-set">
+                        <button id="purchase-btn" class="btn" @click="jmp('purchase')">
+                            <div><i class="fa-solid fa-file-invoice-dollar"></i>&nbsp;直接購買</div>
+                        </button>
+                        <button id="shopping-btn" class="btn" @click="jmp('cart')">
+                            <div><i class="fa-solid fa-cart-shopping"></i>&nbsp;加入購物車</div>
+                        </button>
+                    </div>
                 </div>
-                <input type="text" placeholder="備註">
-                <div id="purchase">
-                    <button id="cancel" @click="browse=true">
-                        <div>取消</div>
-                    </button>
-                    <button id="submit" @click="send()">
-                        <div id="submiticon">submiticon</div>
-                        <div>送出</div>
-                    </button>
+                <div v-else>
+                    <div id="number">
+                        <div>購買數量</div>
+                        <button @click="number--" class="invisible-btn"><i class="fa-solid fa-minus"></i></button>
+                        <div style="margin: 0 5%;">{{ number }}</div>
+                        <button @click="number++" class="invisible-btn"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                    <textarea id="note" placeholder="備註" rows="5"></textarea>
+                    <div id="purchase" class="btn-set">
+                        <button id="cancel-btn" class="btn" @click="browse=true">
+                            <div>取消</div>
+                        </button>
+                        <button id="submit-btn" class="btn" @click="send()">
+                            <div><i class="fa-solid fa-paper-plane"></i>&nbsp;送出</div>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -120,50 +121,87 @@ const dealDate = (date) => {
 
 <style scoped>
 #itw {
-    width: 100%;
-    height: 265px;
+    width: 80%;
     padding: 30px;
     display: flex;
     justify-content: center;
+    align-items: center;
     text-align: center;
+}
+
+#right-half {
+    background-color: #F9F9F9;
+    border-radius: 10%;
+    height: max-content;
 }
 
 #name {
     font-size: 36px;
     font-weight: 900;
 }
+
 #description {
-    margin: 5%;
+    margin: 3%;
 }
 
 #infoArea {
-    width: 40%;
     padding: 2%;
 }
 
-#purchase-btn {
+#purchase-btn, #cancel-btn {
     color: #4E4E4E;
     background: white;
     border: 1px solid #4E4E4E;
-    margin: 2%;
+    margin: 3%;
 }
 
-#shopping-btn {
+#shopping-btn, #submit-btn {
     background: #198754;
     margin: 3%;
 }
 
-#purchase {
-    margin-top: 5%;
+#number {
+    width: 50%;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 25%;
+}
+
+#note {
+    border: none;
+    border-radius: 10%;
+    background-color: white;
+    resize: none;
+    margin-top: 3%;
+    padding: 2%;
+    width: 60%;
+    font-size: 1rem;
+}
+
+.btn-set {
+    margin-top: 3%;
 }
 
 .btn {
-    padding: 3%;
+    padding: 2%;
     width: 35%;
     gap: 10px;
     border: none;
     border-radius: 30px;
     color: white;
     font-weight: bold;
+    font-size: 1rem;
+}
+
+.invisible-btn {
+    border: none;
+    background-color: inherit;
+    color: #474747;
+    font-size: 1.2rem;
+}
+
+.invisible-btn:hover {
+    color: black;
 }
 </style>
