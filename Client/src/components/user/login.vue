@@ -33,7 +33,7 @@ const onclick = async () => {
 
             if (isLogin){ 
                 isLogin.value = true;
-                userId.value = res.userId;
+                userId.value = res.id;
                 type.value = res.type;
                 router.push("/user/");
             }
