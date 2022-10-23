@@ -1,7 +1,9 @@
 <script setup>
 import generatag from './generaTag.vue'
 
-defineProps(['title', 'category_id', 'image', 'end_time', 'arrive_time', 'sold', 'total', 'id'])
+import {ref, defineProps} from 'vue'
+
+defineProps(['title', 'category_id', 'image', 'end_time', 'arrive_time', 'sold', 'total', 'id', 'cat_name', 'cat_color'])
 const dealDate = (date) => {
     date = new Date(date);
     return `${(date.getMonth()+1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
@@ -10,12 +12,11 @@ const dealDate = (date) => {
 
 <template>
     <div>
-        <button @click="$router.push('/user/item/'+id)" id="fcw">
+        <button @click="$router.push('/user/item/'+id)" id="fcw" style="box-shadow: 0 0 10px 'cat_color';">
             <div id="picw">
                 <img style="height: 150px; border-radius: 100%" :src="image" :alt="title">
             </div>
-
-            <div>
+            <div id="in-btn">
                 <div id="name">{{ title }}</div>
                 <div id="tag">
                     <generatag :category_id="category_id"/>
@@ -46,8 +47,13 @@ const dealDate = (date) => {
     justify-content: space-around;
     align-content: center;
     align-items: center;
-    border: none;
+    border: 1px solid lightgray;
     box-shadow: 0 0 10px red;
+}
+
+#in-btn {
+    display: flex;
+    flex-direction: column;
 }
 
 #name {
