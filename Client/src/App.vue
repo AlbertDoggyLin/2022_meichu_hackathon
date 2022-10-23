@@ -20,9 +20,6 @@ provide('car',  car);
 <div id="appW">
   <navbar />
   <RouterView />
-  <div id="fixedtext">
-
-  </div>
 </div>
 </template>
 

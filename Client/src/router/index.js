@@ -13,6 +13,7 @@ import ulogin from '../components/user/login.vue'
 import uorder from '../components/user/order.vue'
 import uprofile from '../components/user/profile.vue'
 import ushopping from '../components/user/shopping.vue'
+import main from '../components/mainPage.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -71,6 +72,10 @@ const router = createRouter({
     {
       path: '/user',
       component: uindex
+    },
+    {
+      path:'/',
+      component:main
     }
   ]
 })
